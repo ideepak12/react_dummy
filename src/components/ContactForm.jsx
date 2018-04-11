@@ -1,4 +1,5 @@
 import React from 'react';
+import {isEmpty } from 'lodash';
 
 class ContactForm extends React.Component {
   constructor() {
@@ -7,11 +8,12 @@ class ContactForm extends React.Component {
       fname: '',
       lname: '',
       city: '',
-      country: '',
+      country: 'india',
       subject: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
+    this.isCompletedForm = this.isCompletedForm.bind(this);
   }
 
   handleChange(e) {
@@ -24,10 +26,23 @@ class ContactForm extends React.Component {
     event.preventDefault()
     const { fname, lname, city, country, subject} = this.state;
     const data ={fname, lname, city,country, subject }
+    this.setState({fname: '', lname: '', city: '', subject: ''})
     this.props.getFormValues(data);
   }
 
+  isCompletedForm(){
+    return true
+  }
+
   render () {
+    const isCompletedForm = (
+        isEmpty(this.state.fname) ||
+        isEmpty(this.state.lname) ||
+        isEmpty(this.state.city) ||
+        isEmpty(this.state.country) ||
+        isEmpty(this.state.subject)
+      )
+
     return(
       <div>
         <h2> {this.props.headings.contact} </h2>
@@ -83,11 +98,14 @@ class ContactForm extends React.Component {
           ></textarea>
 
           <br/><br/>
-          <input
+          <button
             type="submit"
+            disabled={isCompletedForm}
             onClick={this.submitForm}
             value="Submit"
-          />
+          >
+            Submit Form
+          </button>
         </form>
       </div>
     )

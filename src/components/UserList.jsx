@@ -1,14 +1,15 @@
 import React from 'react';
 
 const UserList = (props)=> {
+  if (props.list == null || props.list == undefined) {
+    return null
+  }
+
   return(
-    props.data.map(d=>(
+    props.list.map(d=>(
       <li>{d}</li>
     ))
   )
 }
 
 export default UserList;
-// const UserList = (props)=>(
-//     props.
-//   )
