@@ -7,7 +7,7 @@ const SubjectList = (props) => {
   }
 
   return(
-    <div>
+    <div className="subject">
       <h2> {props.headings.subject} </h2>
 
       <ul>

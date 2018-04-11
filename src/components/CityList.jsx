@@ -7,7 +7,7 @@ const CityList = (props) => {
   }
 
   return(
-    <div>
+    <div className="city">
       <h2> {props.headings.city} </h2>
 
       <ul>

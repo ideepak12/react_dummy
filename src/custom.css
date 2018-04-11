@@ -1,0 +1,32 @@
+.main-app-class .col-md-12 {
+  border: 10px;
+}
+.first_name {
+  margin: 50px;
+}
+.last_name {
+  margin: 50px;
+}
+.contact-form {
+  margin: 50px;
+}
+.city {
+  margin: 50px;
+}
+.country {
+  margin: 50px;
+}
+.subject {
+  margin: 50px;
+}
+.main-app-class ul {
+    margin: 0;
+    padding: 0;
+}
+
+.main-app-class ul li {
+    list-style: none;
+    padding: 10px;
+    background: #e0e0e0;
+    margin-bottom: 5px;
+}

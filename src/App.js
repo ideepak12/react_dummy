@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import { concat } from 'lodash';
 import './App.css';
+import './custom.css';
+import { Navbar, Jumbotron, Button } from 'react-bootstrap/lib';
 import UserList from './components/UserList';
 import ContactForm from './components/ContactForm';
 import FirstNameList from './components/FirstNameList';
@@ -14,7 +16,6 @@ class App extends Component {
   constructor() {
     super();
     this.state={
-      data: [1,2,3,4,5,6,67,7,8,9],
       headings: {
         fname: 'First Name Lists',
         lname: 'Last Name List',
@@ -52,37 +53,51 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <ContactForm
-          headings={this.state.headings}
-          getFormValues={this.getFormValues}
-        />
-        <FirstNameList
-          headings={this.state.headings}
-          fnameList={this.state.fnameList}
-        />
-        <LastNameList
-          headings={this.state.headings}
-          lnameList={this.state.lnameList}
-        />
-        <CountryList
-          headings={this.state.headings}
-          countryList={this.state.countryList}
-        />
-        <CityList
-          headings={this.state.headings}
-          cityList={this.state.cityList}
-        />
-        <SubjectList
-          headings={this.state.headings}
-          subjectList={this.state.subjectList}
-        />
+      <div className='container'>
+        <div className="main-app-class">
 
-        <ul>
-          <UserList
-            list={this.state.data}
+          <ContactForm
+            headings={this.state.headings}
+            getFormValues={this.getFormValues}
           />
-        </ul>
+
+
+          <div className='row'>
+            <div className="col-md-4">
+              <FirstNameList
+                headings={this.state.headings}
+                fnameList={this.state.fnameList}
+              />
+            </div>
+            <div className="col-md-4">
+              <LastNameList
+                headings={this.state.headings}
+                lnameList={this.state.lnameList}
+              />
+            </div>
+            <div className="col-md-4">
+              <CountryList
+                headings={this.state.headings}
+                countryList={this.state.countryList}
+              />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-md-4">
+              <CityList
+                headings={this.state.headings}
+                cityList={this.state.cityList}
+              />
+            </div>
+            <div className="col-md-8">
+              <SubjectList
+                headings={this.state.headings}
+                subjectList={this.state.subjectList}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

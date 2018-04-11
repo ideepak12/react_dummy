@@ -2,7 +2,6 @@ import React from 'react';
 import UserList from './UserList'
 
 const FirstNameList = (props) => {
-  debugger
   if(props.fnameList.length == 0) {
     return null
   }

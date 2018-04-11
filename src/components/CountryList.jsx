@@ -7,7 +7,7 @@ const CountryList = (props) => {
   }
 
   return(
-    <div>
+    <div className="country">
       <h2> {props.headings.country} </h2>
 
       <ul>

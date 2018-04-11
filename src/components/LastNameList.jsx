@@ -8,7 +8,7 @@ const LastNameList = (props) => {
   }
   // render () {
     return(
-      <div>
+      <div className="last_name">
         <h2> {props.headings.lname} </h2>
 
         <ul>
