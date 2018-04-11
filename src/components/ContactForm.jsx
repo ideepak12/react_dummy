@@ -7,42 +7,24 @@ class ContactForm extends React.Component {
       fname: '',
       lname: '',
       city: '',
-      country: 'india',
+      country: '',
       subject: ''
     }
-    this.fName = this.fName.bind(this);
-    this.lName = this.lName.bind(this);
-    this.city = this.city.bind(this);
-    this.subject = this.subject.bind(this);
-    this.country = this.country.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
   }
 
-  fName(e) {
-    this.setState({fname: e.target.value});
-  }
-
-  lName(e) {
-    this.setState({lname: e.target.value});
-  }
-
-  city(e) {
-    this.setState({city: e.target.value});
-  }
-
-  country(e){
-    this.setState({country: e.target.value});
-  }
-
-  subject(e){
-    this.setState({subject: e.target.value});
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   }
 
   submitForm (event){
     event.preventDefault()
     const { fname, lname, city, country, subject} = this.state;
     const data ={fname, lname, city,country, subject }
-    this.props.submitForm(data);
+    this.props.getFormValues(data);
   }
 
   render () {
@@ -56,9 +38,9 @@ class ContactForm extends React.Component {
             type="text"
             id="fname"
             value={this.state.fname}
-            name="firstname"
+            name="fname"
             placeholder="Your name.."
-            onChange={this.fName}
+            onChange={this.handleChange}
           />
 
           <br/><br/>
@@ -67,19 +49,24 @@ class ContactForm extends React.Component {
             type="text"
             id="lname"
             value={this.state.lname}
-            name="lastname"
+            name="lname"
             placeholder="Your last name.."
-            onChange={this.lName}
+            onChange={this.handleChange}
           />
 
           <br/><br/>
           <label for="city">City Name</label>
           <input type="text"
-          id="city" value={this.state.city} name="city" placeholder="Your last city.." onChange={this.city} />
+            id="city"
+            value={this.state.city}
+            name="city"
+            placeholder="Your last city.."
+            onChange={this.handleChange}
+          />
 
           <br/><br/>
           <label for="country">Country</label>
-          <select id="country" name="country" onChange={this.country}>
+          <select id="country" name="country" onChange={this.handleChange}>
             <option value="australia">Australia</option>
             <option value="india" selected>India</option>
             <option value="us">us</option>
@@ -87,10 +74,20 @@ class ContactForm extends React.Component {
 
           <br/><br/>
           <label for="subject">Subject</label>
-          <textarea id="subject" value={this.state.subject} name="subject" placeholder="Write something.." onChange={this.subject} ></textarea>
+          <textarea
+            id="subject"
+            value={this.state.subject}
+            name="subject"
+            placeholder="Write something.."
+            onChange={this.handleChange}
+          ></textarea>
 
           <br/><br/>
-          <input type="submit" onClick={this.submitForm} value="Submit" />
+          <input
+            type="submit"
+            onClick={this.submitForm}
+            value="Submit"
+          />
         </form>
       </div>
     )

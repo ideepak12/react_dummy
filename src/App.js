@@ -16,17 +16,19 @@ class App extends Component {
       data: [1,2,3,4,5,6,67,7,8,9],
       headings: {fname: 'First Name Lists', lname: 'Last Name List', city: 'City Name List', contact: 'Contact Form', country: 'Country Name List', subject: 'Subject List'}
     }
-    this.submitForm = this.submitForm.bind(this);
+    this.getFormValues = this.getFormValues.bind(this);
   }
-  submitForm(value){
-    alert(value);
+
+  getFormValues(values){
+    alert(values.fname + ", " + values.lname + ', ' + values.city + ', ' + values.subject + ', ' + values.country);
   }
+
   render() {
     return (
       <div>
         <ContactForm
           headings={this.state.headings}
-          submitForm={this.submitForm}
+          getFormValues={this.getFormValues}
         />
         <FirstNameList headings={this.state.headings}/>
         <LastNameList headings={this.state.headings}/>
