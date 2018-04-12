@@ -4,6 +4,8 @@ import { concat } from 'lodash';
 import './App.css';
 import './custom.css';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap/lib';
+import axios from 'axios'
+
 import UserList from './components/UserList';
 import ContactForm from './components/ContactForm';
 import FirstNameList from './components/FirstNameList';
@@ -11,6 +13,7 @@ import LastNameList from './components/LastNameList';
 import CountryList from './components/CountryList';
 import CityList from './components/CityList';
 import SubjectList from './components/SubjectList';
+import CarList from './components/CarList';
 
 class App extends Component {
   constructor() {
@@ -29,11 +32,21 @@ class App extends Component {
       lnameList: [],
       cityList: [],
       countryList: [],
-      subjectList: []
+      subjectList: [],
+      cars: []
     }
 
     this.getFormValues = this.getFormValues.bind(this);
     this.updateList = this.updateList.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:3001/api/cars')
+    .then(response => {
+      console.log(response)
+      this.setState({cars: response.data})
+    })
+    .catch(error => console.log(error))
   }
 
   updateList(values) {
@@ -55,12 +68,14 @@ class App extends Component {
     return (
       <div className='container'>
         <div className="main-app-class">
+          <CarList
+            list={this.state.cars}
+          />
 
           <ContactForm
             headings={this.state.headings}
             getFormValues={this.getFormValues}
           />
-
 
           <div className='row'>
             <div className="col-md-4">
