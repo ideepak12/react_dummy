@@ -23,7 +23,7 @@ class App extends Component {
         fname: 'First Name Lists',
         lname: 'Last Name List',
         city: 'City Name List',
-        contact: 'Contact Form',
+        contact: 'User Registration Form',
         country: 'Country Name List',
         subject: 'Subject List'
       },
@@ -68,10 +68,6 @@ class App extends Component {
     return (
       <div className='container'>
         <div className="main-app-class">
-          <CarList
-            list={this.state.cars}
-          />
-
           <ContactForm
             headings={this.state.headings}
             getFormValues={this.getFormValues}
@@ -112,6 +108,10 @@ class App extends Component {
               />
             </div>
           </div>
+          
+          <CarList
+          list={this.state.cars}
+          />
         </div>
       </div>
     );

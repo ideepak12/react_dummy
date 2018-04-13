@@ -30,34 +30,41 @@ class ContactForm extends React.Component {
         this.state.city.length < 2 || this.state.subject.length < 10) {
       if (this.state.fname.length < 2) {
         errorAll['fname'] = 'First Name is Invalid!' ;
-        // this.setState({
-        //   // error: {fname: "First Name is Invalid!"}
-        // });
+      } else {
+        errorAll['fname'] = '' ;
       }
       if (this.state.lname.length < 2) {
         errorAll['lname'] = 'Last Name is Invalid!' ;
-        // this.setState({
-        //   error: {lname: "Last Name is Invalid!"}
-        // });
+      } else {
+        errorAll['lname'] = '' ;
       }
       if (this.state.city.length < 2) {
         errorAll['city'] = 'City Name is Invalid!' ;
-        // this.setState({
-        //   error: {city: "City Name is Invalid!"}
-        // });
+      } else {
+        errorAll['city'] = '' ;
       }
       if (this.state.subject.length < 10) {
         errorAll['subject'] = 'Subject is Invalid!' ;
-        // this.setState({
-        //   // error: {subject: "Subject is Invalid!"}
-        // });
+      } else {
+        errorAll['subject'] = '' ;
       }
 
       this.setState({error: errorAll});
     } else {
       const { fname, lname, city, country, subject} = this.state;
       const data ={fname, lname, city,country, subject }
-      this.setState({fname: '', lname: '', city: '', subject: ''})
+      this.setState({
+        fname: '',
+        lname: '',
+        city: '',
+        subject: '',
+        error: {
+          fname: '',
+          lname: '',
+          city: '',
+          subject: ''
+        }
+      })
       this.props.getFormValues(data);
     }
   }
