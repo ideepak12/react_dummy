@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, NavItem } from 'react-bootstrap/lib';
+import { Nav, NavItem, LinkContainer } from 'react-bootstrap/lib';
 import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
@@ -19,13 +19,37 @@ class Header extends React.Component {
     return(
       <header>
         <Nav bsStyle="tabs" activeKey="1" onSelect={k => {}}>
-          <NavItem eventKey="1" title="home" href="/" onClick={this.getInitialState}>
+          <NavItem
+            componentClass={Link}
+            eventKey="1"
+            title="home"
+            href="/"
+            to="/"
+            onClick={()=>this.changeState('tab1')}
+            className={(this.state.activeTabClassName === "tab1") ? "active" : ""}
+          >
             Home
           </NavItem>
-          <NavItem eventKey="2" title="welcome" href="/welcome" onClick={this.getInitialState}>
+          <NavItem
+            componentClass={Link}
+            eventKey="2"
+            title="welcome"
+            href="/welcome"
+            to="/welcome"
+            onClick={()=>this.changeState('tab2')}
+            className={(this.state.activeTabClassName === "tab2") ? "active" : ""}
+          >
             Welcome
           </NavItem>
-          <NavItem eventKey="3" title="cars" href="/cars" onClick={this.getInitialState}>
+          <NavItem
+            componentClass={Link}
+            eventKey="3"
+            title="cars"
+            href="/cars"
+            to="/cars"
+            onClick={()=>this.changeState('tab3')}
+            className={(this.state.activeTabClassName === "tab3") ? "active" : ""}
+          >
             Car
           </NavItem>
         </Nav>
