@@ -29,12 +29,23 @@
     background: #e0e0e0;
     margin-bottom: 5px;
 }
-.cars_list{
+.cars_list {
   margin: 10px;
   background: lightyellow;
+  padding: 10px;
+  margin-left: 20px;
 }
-.error-msg{
+.cars_list h1 {
+  background-color: #c3d3f5;
+}
+.error-msg {
    background-color: #f57f7f;
    margin-bottom: 20px;
    margin-top: 5px;
+}
+.footer {
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+  background: darkgrey;
 }
