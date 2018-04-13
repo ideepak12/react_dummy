@@ -12,7 +12,7 @@ import FirstNameList from './components/FirstNameList';
 import LastNameList from './components/LastNameList';
 import CountryList from './components/CountryList';
 import CityList from './components/CityList';
-import SubjectList from './components/SubjectList';
+import UsernameList from './components/UsernameList';
 import CarList from './components/CarList';
 
 class App extends Component {
@@ -20,19 +20,19 @@ class App extends Component {
     super();
     this.state={
       headings: {
+        contact: 'User Registration Form',
         fname: 'First Name Lists',
         lname: 'Last Name List',
         city: 'City Name List',
-        contact: 'User Registration Form',
         country: 'Country Name List',
-        subject: 'Subject List'
+        username: 'User Name List'
       },
       formData: {},
       fnameList: [],
       lnameList: [],
       cityList: [],
       countryList: [],
-      subjectList: [],
+      usernameList: [],
       cars: []
     }
 
@@ -55,7 +55,7 @@ class App extends Component {
       lnameList: concat(this.state.lnameList, values.lname),
       cityList: concat(this.state.cityList, values.city),
       countryList: concat(this.state.countryList, values.country),
-      subjectList: concat(this.state.subjectList, values.subject),
+      usernameList: concat(this.state.usernameList, values.username),
     });
   }
 
@@ -102,13 +102,13 @@ class App extends Component {
               />
             </div>
             <div className="col-md-8">
-              <SubjectList
+              <UsernameList
                 headings={this.state.headings}
-                subjectList={this.state.subjectList}
+                usernameList={this.state.usernameList}
               />
             </div>
           </div>
-          
+
           <CarList
           list={this.state.cars}
           />
