@@ -9,11 +9,11 @@ class ContactForm extends React.Component {
       lname: '',
       city: '',
       country: 'india',
-      subject: ''
+      subject: '',
+      error: {fname: '', lname: '', city: '', subject: ''}
     }
     this.handleChange = this.handleChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    this.isCompletedForm = this.isCompletedForm.bind(this);
   }
 
   handleChange(e) {
@@ -24,14 +24,42 @@ class ContactForm extends React.Component {
 
   submitForm (event){
     event.preventDefault()
-    const { fname, lname, city, country, subject} = this.state;
-    const data ={fname, lname, city,country, subject }
-    this.setState({fname: '', lname: '', city: '', subject: ''})
-    this.props.getFormValues(data);
-  }
+    const errorAll = Object.assign({}, this.state.error);
 
-  isCompletedForm(){
-    return true
+    if (this.state.fname.length < 2 || this.state.lname.length < 2 ||
+        this.state.city.length < 2 || this.state.subject.length < 10) {
+      if (this.state.fname.length < 2) {
+        errorAll['fname'] = 'First Name is Invalid!' ;
+        // this.setState({
+        //   // error: {fname: "First Name is Invalid!"}
+        // });
+      }
+      if (this.state.lname.length < 2) {
+        errorAll['lname'] = 'Last Name is Invalid!' ;
+        // this.setState({
+        //   error: {lname: "Last Name is Invalid!"}
+        // });
+      }
+      if (this.state.city.length < 2) {
+        errorAll['city'] = 'City Name is Invalid!' ;
+        // this.setState({
+        //   error: {city: "City Name is Invalid!"}
+        // });
+      }
+      if (this.state.subject.length < 10) {
+        errorAll['subject'] = 'Subject is Invalid!' ;
+        // this.setState({
+        //   // error: {subject: "Subject is Invalid!"}
+        // });
+      }
+
+      this.setState({error: errorAll});
+    } else {
+      const { fname, lname, city, country, subject} = this.state;
+      const data ={fname, lname, city,country, subject }
+      this.setState({fname: '', lname: '', city: '', subject: ''})
+      this.props.getFormValues(data);
+    }
   }
 
   render () {
@@ -42,7 +70,6 @@ class ContactForm extends React.Component {
         isEmpty(this.state.country) ||
         isEmpty(this.state.subject)
       )
-
     return(
       <div className="contact-form">
         <h2> {this.props.headings.contact} </h2>
@@ -59,6 +86,9 @@ class ContactForm extends React.Component {
               className="form-control"
               onChange={this.handleChange}
             />
+            <div className="error-msg">
+              {this.state.error.fname}
+            </div>
           </div>
           <div className="form-group">
             <label for="lname">Last Name</label>
@@ -71,6 +101,9 @@ class ContactForm extends React.Component {
               className="form-control"
               onChange={this.handleChange}
             />
+            <div className="error-msg">
+              {this.state.error.lname}
+            </div>
           </div>
           <div className="form-group">
             <label for="city">City Name</label>
@@ -82,6 +115,9 @@ class ContactForm extends React.Component {
               className="form-control"
               onChange={this.handleChange}
             />
+            <div className="error-msg">
+              {this.state.error.city}
+            </div>
           </div>
           <div className="form-group">
             <label for="country">Country</label>
@@ -92,15 +128,18 @@ class ContactForm extends React.Component {
             </select>
           </div>
           <div className="form-group">
-          <label for="subject">Subject</label>
-          <textarea
-            id="subject"
-            value={this.state.subject}
-            name="subject"
-            placeholder="Write something.."
-            className="form-control"
-            onChange={this.handleChange}
-          ></textarea>
+            <label for="subject">Subject</label>
+            <textarea
+              id="subject"
+              value={this.state.subject}
+              name="subject"
+              placeholder="Write something.."
+              className="form-control"
+              onChange={this.handleChange}
+            ></textarea>
+            <div className="error-msg">
+              {this.state.error.subject}
+            </div>
           </div>
           <div className="form-group">
             <button

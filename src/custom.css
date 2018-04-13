@@ -33,3 +33,8 @@
   margin: 10px;
   background: lightyellow;
 }
+.error-msg{
+   background-color: #f57f7f;
+   margin-bottom: 20px;
+   margin-top: 5px;
+}
