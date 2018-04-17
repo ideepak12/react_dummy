@@ -3,7 +3,7 @@ import UserList from './UserList'
 
 // class LastNameList extends React.Component {
 const LastNameList = (props) => {
-  if(props.lnameList.length == 0) {
+  if(props.lnameList.length === 0) {
     return null
   }
   // render () {

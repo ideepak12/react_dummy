@@ -1,5 +1,4 @@
 import React from 'react';
-import { isEmpty } from 'lodash';
 import axios from 'axios'
 
 class ContactForm extends React.Component {
@@ -70,7 +69,7 @@ class ContactForm extends React.Component {
       if (this.state.password_confirmation.length < 8) {
         errorAll['password_confirmation'] = 'Repeated Password should be al-least 8 characters!' ;
       } else if (this.state.password.length >= 8 && this.state.password_confirmation.length >= 8
-        && this.state.password != this.state.password_confirmation) {
+        && this.state.password !== this.state.password_confirmation) {
         errorAll['password_confirmation'] = 'Password not matching!!!' ;
       } else {
         errorAll['password_confirmation'] = '' ;
@@ -133,20 +132,13 @@ class ContactForm extends React.Component {
 
   render () {
     const isCompletedForm = false
-    // const isCompletedForm = (
-    //     isEmpty(this.state.fname) ||
-    //     isEmpty(this.state.lname) ||
-    //     isEmpty(this.state.city) ||
-    //     isEmpty(this.state.country) ||
-    //     isEmpty(this.state.username)
-    //   )
     return(
       <div className="contact-form">
         <h2> {this.props.headings.contact} </h2>
 
         <form action="#">
           <div className="form-group">
-            <label for="fname">First Name</label>
+            <label htmlFor="fname">First Name</label>
             <input
               type="text"
               id="fname"
@@ -161,7 +153,7 @@ class ContactForm extends React.Component {
             </div>
           </div>
           <div className="form-group">
-            <label for="lname">Last Name</label>
+            <label htmlFor="lname">Last Name</label>
             <input
               type="text"
               id="lname"
@@ -176,7 +168,7 @@ class ContactForm extends React.Component {
             </div>
           </div>
           <div className="form-group">
-            <label for="username">User Name</label>
+            <label htmlFor="username">User Name</label>
             <input
               type="text"
               id="username"
@@ -191,7 +183,7 @@ class ContactForm extends React.Component {
             </div>
           </div>
           <div className="form-group">
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
               id="email"
@@ -206,7 +198,7 @@ class ContactForm extends React.Component {
             </div>
           </div>
           <div className="form-group">
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
@@ -221,7 +213,7 @@ class ContactForm extends React.Component {
             </div>
           </div>
           <div className="form-group">
-            <label for="password_confirmation">Confirm Password</label>
+            <label htmlFor="password_confirmation">Confirm Password</label>
             <input
               type="password"
               id="password_confirmation"
@@ -236,7 +228,7 @@ class ContactForm extends React.Component {
             </div>
           </div>
           <div className="form-group">
-            <label for="city">City Name</label>
+            <label htmlFor="city">City Name</label>
             <input type="text"
               id="city"
               value={this.state.city}
@@ -250,10 +242,10 @@ class ContactForm extends React.Component {
             </div>
           </div>
           <div className="form-group">
-            <label for="country">Country</label>
-            <select id="country" name="country" className='form-control' onChange={this.handleChange}>
+            <label htmlFor="country">Country</label>
+            <select defaultValue='india' id="country" name="country" className='form-control' onChange={this.handleChange}>
               <option value="australia">Australia</option>
-              <option value="india" selected>India</option>
+              <option value="india">India</option>
               <option value="us">us</option>
             </select>
           </div>

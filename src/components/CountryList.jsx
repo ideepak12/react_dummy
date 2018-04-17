@@ -2,7 +2,7 @@ import React from 'react';
 import UserList from './UserList'
 
 const CountryList = (props) => {
-  if(props.countryList.length == 0) {
+  if(props.countryList.length === 0) {
     return null
   }
 

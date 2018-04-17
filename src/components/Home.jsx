@@ -1,6 +1,5 @@
 import React from 'react';
 import { concat } from 'lodash';
-import UserList from './UserList';
 import ContactForm from './ContactForm';
 import FirstNameList from './FirstNameList';
 import LastNameList from './LastNameList';

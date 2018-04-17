@@ -1,7 +1,7 @@
 import React from 'react';
 
 const UserList = (props)=> {
-  if (props.list == null || props.list == undefined) {
+  if (props.list === null || props.list === undefined) {
     return null
   }
 
