@@ -6,9 +6,19 @@ import _ from 'lodash';
 
 class Login extends React.Component {
   renderData() {
-    return (_.map(this.props.users, user => (
-      <h1> {user.name}: {user.password} </h1>
-    )))
+    return (
+      <div>
+        {_.map(this.props.users, user => (
+          <h1> {user.name}: {user.password} </h1>
+        ))}
+        <br/> <br/> <br/>
+        <form>
+          <p> Name: <input type="text" name='name' /> </p>
+          <p> Password: <input type="password" name="password" /> </p>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    )
   }
 
   render() {
